@@ -1,6 +1,6 @@
 // document.getElementById("answer_button").onclick = redirect_by_answer();
 function redirect_by_answer(){
-	var base_url = "/Users/ishikawa/Documents/deco_num/";
+	var base_url = "http://localhost:8000/";
 
 	var answer = document.getElementById('answer').value;
 	if( answer ){
@@ -13,3 +13,8 @@ function redirect_by_answer(){
 
 	location.href = url;
 };
+
+$(function(){
+    $("#footer").load("footer.html");
+});
+
