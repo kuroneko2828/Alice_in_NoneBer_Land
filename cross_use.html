@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Alice in NoneBer Land</title>
+		<meta name="description" content="解読x数字がテーマのWeb謎">
+		<!-- CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="style.css">
+	</head>
+
+	<body>
+		<header id="header"></header>
+		<!-- <p id="title" class="text-center">お茶会での出題</p> -->
+		<div id="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mx-auto">
+						<div id="rule" class="box26">
+							<span class="box-title">ルール</span>
+							<ul>
+								<li>盤面の数字は、そのマスの周囲8マスに存在する黒マスの数を表しています。</li>
+								<li>空白のマスに数字をいれる、もしくは黒マスにして、盤面を完成させましょう。</li>
+								<li>候補にある数字は、全て盤面に出てくるようにしてください。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-5">
+						<table id="cross" class="question float-md-end mt-2 mt-md-5">
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="black-box"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="black-box"></td>
+							</tr>
+							<tr>
+								<td class="black-box"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="black-box"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="col-md-4">
+						<div class="box26 mt-5">
+							<h5 class="box-title" style="text-align: center">鍵</h5>
+							<ul>
+								<li>これ以外の鍵の合計</li>
+								<li>long double型で表現できる最大値：〜e＋<span style="font-weight: bold">？</span></li>
+								<li>Alice <span style="color: blue">B</span>lue</li>
+								<li>Through the Looking-Glass,<br>and What Alice Found There</li>
+								<li><img class="in-text" src="images/FTKTbcjU_dSd4ELT.png"></img><img class="in-text" src="images/BBfmTKNrc45DYPcw.png"></img>番目の素数</li>
+								<li>短歌の文字数</li>
+								<li><img class="in-text" src="images/FTKTbcjU_dSd4ELT.png"></img>桁の自然数のうち、最大の数</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<div class="text-center">
+							<h4>候補</h4>
+							<table id="kouho" style="margin: auto;">
+								<tr>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/7tH3ba-e74zEbr2B.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/dyT3ksKEBSB8Q4pt.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/fdrDDa-R-WTFpdtJ.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/FTKTbcjU_dSd4ELT.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/kxjuTJf3xAAe5yTf.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/mi2TKWYM_FGuYfWz.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/mZjUp8tYWs6fHWae.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/PauEnBcbXDSy-3GF.png" width=30 height=30>
+									</td>
+								</tr>
+								<tr>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/xBu3tDpGjjhjR27B.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/BBfmTKNrc45DYPcw.png" width=30 height=30>
+									</td>
+
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/3Jtg3m8pWjsdFdTz.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/7msaTMEKXG72mNVe.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/djYyKT72i5UGC-BP.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/rZE3atBAzwcD-fQR.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/wuGpVXzBtUrpp5Tx.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/ZGS3jepAbcwg4eNa.png" width=30 height=30>
+									</td>
+								</tr>
+							</table>
+							<button id="clear_masu" class="btn btn-outline-info submit-btn small-btn rounded-pill" style="margin-left: 0;" onclick="select_kouho(event)">数字をクリア</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-12">
+					<div class="submit text-center">
+						<button type="button" class="btn btn-outline-info submit-btn large-btn" onclick="check_cross_use()">
+							Check
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="popup"></div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="main.js"></script>
+	</body>
+</html>

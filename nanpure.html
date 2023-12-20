@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Alice in NoneBer Land</title>
+		<meta name="description" content="解読x数字がテーマのWeb謎">
+		<!-- CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="style.css">
+	</head>
+
+	<body>
+		<header id="header"></header>
+		<!-- <p id="title" class="text-center">お茶会での出題</p> -->
+		<div id="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mx-auto">
+						<div id="rule" class="box26">
+							<span class="box-title">ルール</span>
+							<ul>
+								<li>まだ数字の入っていないマスに、候補から数字を選択して入れていきましょう。</li>
+								<li>縦列、横列、太線で囲まれたブロックのいずれも、同じ数字が重複して入らないようにしましょう。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-7">
+						<table id="nanpure" class="question float-md-end mt-2 mt-md-5">
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/mZjUp8tYWs6fHWae.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/dyT3ksKEBSB8Q4pt.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/fdrDDa-R-WTFpdtJ.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="images/7tH3ba-e74zEbr2B.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/kxjuTJf3xAAe5yTf.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/fdrDDa-R-WTFpdtJ.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/FTKTbcjU_dSd4ELT.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/dyT3ksKEBSB8Q4pt.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/PauEnBcbXDSy-3GF.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/7tH3ba-e74zEbr2B.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/mZjUp8tYWs6fHWae.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/kxjuTJf3xAAe5yTf.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/mi2TKWYM_FGuYfWz.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/7tH3ba-e74zEbr2B.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/FTKTbcjU_dSd4ELT.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/fdrDDa-R-WTFpdtJ.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/xBu3tDpGjjhjR27B.png" width=30 height=30>
+								</td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="images/PauEnBcbXDSy-3GF.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/FTKTbcjU_dSd4ELT.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/mZjUp8tYWs6fHWae.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/fdrDDa-R-WTFpdtJ.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/dyT3ksKEBSB8Q4pt.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/kxjuTJf3xAAe5yTf.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/mi2TKWYM_FGuYfWz.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/7tH3ba-e74zEbr2B.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/mZjUp8tYWs6fHWae.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/dyT3ksKEBSB8Q4pt.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/FTKTbcjU_dSd4ELT.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/fdrDDa-R-WTFpdtJ.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/mi2TKWYM_FGuYfWz.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/mZjUp8tYWs6fHWae.png" width=30 height=30>
+								</td>
+							</tr>
+							<tr>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/FTKTbcjU_dSd4ELT.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td class="holder" onclick="select_masu(event)"></td>
+								<td>
+									<img src="images/mi2TKWYM_FGuYfWz.png" width=30 height=30>
+								</td>
+								<td>
+									<img src="images/dyT3ksKEBSB8Q4pt.png" width=30 height=30>
+								</td>
+								<td class="holder" onclick="select_masu(event)"></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="col-md-5 kouho_space">
+						<div class="float-md-first mt-3 mt-md-5 ml-md-3">
+							<table id="kouho" class="float-md-first">
+								<h4 style="text-align: left;">候補</h4>
+								<tr>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/7tH3ba-e74zEbr2B.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/dyT3ksKEBSB8Q4pt.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/fdrDDa-R-WTFpdtJ.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/FTKTbcjU_dSd4ELT.png" width=30 height=30>
+									</td>
+								</tr>
+								<tr>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/kxjuTJf3xAAe5yTf.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/mi2TKWYM_FGuYfWz.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/mZjUp8tYWs6fHWae.png" width=30 height=30>
+									</td>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/PauEnBcbXDSy-3GF.png" width=30 height=30>
+									</td>
+								</tr>
+								<tr>
+									<td class="kouho_masu" onclick="select_kouho(event)">
+										<img src="images/xBu3tDpGjjhjR27B.png" width=30 height=30>
+									</td>
+								</tr>
+							</table>
+							<button id="clear_masu" class="btn btn-outline-info submit-btn small-btn rounded-pill" onclick="select_kouho(event)">数字をクリア</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="submit text-center">
+							<button type="button" class="btn btn-outline-info submit-btn large-btn" onclick="check_nanpure()">
+								Check
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="popup"></div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
