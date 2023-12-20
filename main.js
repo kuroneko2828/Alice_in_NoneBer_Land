@@ -1,18 +1,18 @@
 // document.getElementById("answer_button").onclick = redirect_by_answer();
 function redirect_by_answer(){
-	var present_path = location.pathname;
+	var present_path = location.pathname.split('/').slice(-1)[0]
 
 	var answer = document.getElementById('answer').value;
 
 	var should_move = false
-	if ( present_path == "/nanpure.html" ){
+	if ( present_path == "nanpure.html" ){
 		if (answer == "帽子屋" || answer == "ヤマネ"){
 			create_popup(`「どうしたんだ？まさか解けないわけじゃないだろう？」
 			<br>「解けるよ！君の世界には同じようなパズルはあったりしない？数字が分からなくても解けるはずだよ！」`)
 		}else if (answer == "マーチヘア"){
 			create_popup(`「解けないなら、自動解答してくれるサイトを使うのもありだよ！...なにを言っているんだろう」`)
 		}
-	}else if ( present_path == "/minesweeper.html" ){
+	}else if ( present_path == "minesweeper.html" ){
 		if (answer == "チェシャ猫"){
 			create_popup(`「お茶会で見た数字と、このパズルの数字、全部同じ数字だったか？そこが手がかりになるぜ。もっとヒントが欲しいなら、チェシャ猫さまって呼ぶんだな」`)
 		}else if (answer == "チェシャ猫さま"){
@@ -20,7 +20,7 @@ function redirect_by_answer(){
 		}else if (answer == "チェシャ猫さまさま"){
 			create_popup(`「最後のほうは、候補の数字が全て盤面に出てくるってルールも大事になるぜ。もうヒントはおしまいだ。そろそろ解いてくれよ？」`)
 		}
-	}else if (present_path == "/cross_rejected.html"){
+	}else if (present_path == "cross_rejected.html"){
 		if (answer == "白うさぎ"){
 			create_popup(`「パズル解けた？...ぼくにヒント？無理だよ。ぼくはあのねこに、きみにこれを解かせるように言われただけだもん。さあ、早く解いて！」`)
 		}else if (answer == "チェシャ猫"){
@@ -35,7 +35,7 @@ function redirect_by_answer(){
 			</div>`)
 		}
 
-	}else if (present_path == "/cross_use.html"){
+	}else if (present_path == "cross_use.html"){
 		if (answer == "白うさぎ"){
 			create_popup(`「だからぼくは知らないってば！じゃましないでよ！」`)
 		}else if (answer == "くろねこ"){
@@ -43,7 +43,7 @@ function redirect_by_answer(){
 		}else if (answer == "ねこちゃん"){
 			create_popup(`『数字がわかったなら、鍵を全部数字に直すといいよ。それから、確実に分かるところから入れていくんだ』`)
 		}
-	}else if (present_path == "/story_choice.html"){
+	}else if (present_path == "story_choice.html"){
 		if (answer == "くろねこ"){
 			location.href="story_kuroneko.html"
 		}
@@ -51,7 +51,7 @@ function redirect_by_answer(){
 	if (answer == "ルイス・キャロル" || answer == "ルイスキャロル" || answer == "Lewis Carroll" ||
 		answer == "チャールズ・ラトウィッジ・ドジソン" || answer == "チャールズラトウィッジドジソン" ||
 		answer == "Charles Lutwidge Dodgson"){
-		if (present_path == "/story_choice.html"){
+		if (present_path == "story_choice.html"){
 			location.href = "story_home.html"
 		}else{
 			create_popup(`ここにパパはいない`)
@@ -273,8 +273,8 @@ function check_skip(n){
 }
 
 // can't escape
-present_path = location.pathname;
+present_path = location.pathname.split('/').slice(-1)[0]
 progress = get_progress()
-if (progress == 4 && present_path != "/story_kuroneko.html"){
+if (progress == 4 && present_path != "story_kuroneko.html"){
 	location.href = "story_kuroneko.html"
 }
