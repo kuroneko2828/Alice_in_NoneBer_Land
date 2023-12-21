@@ -87,13 +87,22 @@ function select_kouho(e){
 		if (child){
 			masu.removeChild(child)
 		}
-		if (e.currentTarget.id != "clear_masu"){
+		if (e.currentTarget.id != "clear_masu" && e.currentTarget.id != "flag"){
 			var img_tag = document.createElement("img");
 			masu.appendChild(img_tag);
 			var src=e.currentTarget.firstElementChild.getAttribute("src");
 			img_tag.setAttribute("src", src);
 			img_tag.setAttribute("width", "46px");
 			img_tag.setAttribute("height", "46px");
+		}
+		if (e.currentTarget.id == "flag"){
+			var img_tag = document.createElement("img");
+			masu.appendChild(img_tag);
+			var src="images/flag.png"
+			img_tag.setAttribute("src", src);
+			img_tag.setAttribute("width", "46px");
+			img_tag.setAttribute("height", "46px");
+			console.log('flag')
 		}
 	}
 }
