@@ -41,7 +41,9 @@ function redirect_by_answer(){
 		}else if (answer == "くろねこ"){
 			create_popup(`『まずは、数字がどの数を表しているのかを特定しないとね。小さい方から数字を並べたときに何か規則性があったりしないかな？何かが増えたり消えたりとか...ね。もっとヒントが欲しいならねこちゃんって呼んでよ』`)
 		}else if (answer == "ねこちゃん"){
-			create_popup(`『数字がわかったなら、鍵を全部数字に直すといいよ。それから、確実に分かるところから入れていくんだ』`)
+			create_popup(`『<img src="images/mi2TKWYM_FGuYfWz.png" style="width: 1em; height: 1em;"></src>進数と<img src="images/3Jtg3m8pWjsdFdTz.png" style="width: 1em; height: 1em;"></img>進数が数字を解読するヒントだよ。もっとヒントが欲しいなら、くろねこ好きって言ってよ』`)
+		}else if (answer == "くろねこ好き"){
+			create_popup(`『ありがとう！！数字がわかったなら、鍵を全部数字に直すといいよ。それから、確実に分かるところから入れていくんだ！そっかぁ、ぼくのこと好きなんだぁ』`)
 		}
 	}else if (present_path == "story_choice.html"){
 		if (answer == "くろねこ"){
@@ -278,3 +280,15 @@ progress = get_progress()
 if (progress == 4 && present_path != "story_kuroneko.html"){
 	location.href = "story_kuroneko.html"
 }
+
+$(function(){
+	present_path = location.pathname.split('/').slice(-1)[0]
+	progress = get_progress()
+    if (window.name != "re_load" && progress==4) {
+        location.reload();
+        window.name = "re_load";
+    }else{
+        window.name = "";
+    }
+});
+

@@ -260,3 +260,9 @@ td:not(.holder):not(.kouho_masu){
 .chapter li a{
 	color: #95ccff;
 }
+
+#skip{
+	display: none;
+	margin-left: 20px;
+	color: #95ccff;
+}
