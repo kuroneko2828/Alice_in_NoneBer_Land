@@ -278,17 +278,12 @@ function check_skip(n){
 present_path = location.pathname.split('/').slice(-1)[0]
 progress = get_progress()
 if (progress == 4 && present_path != "story_kuroneko.html"){
+	alert('『逃さないよ』')
 	location.href = "story_kuroneko.html"
 }
 
-$(function(){
-	present_path = location.pathname.split('/').slice(-1)[0]
-	progress = get_progress()
-    if (window.name != "re_load" && progress==4) {
-        location.reload();
-        window.name = "re_load";
-    }else{
-        window.name = "";
-    }
+window.addEventListener('pageshow',()=>{
+	if(window.performance.navigation.type==2){
+		location.reload();
+	}
 });
-
