@@ -183,7 +183,7 @@ function check_cross_use(){
 	const answer = [[1, 12, 1, 0],
 		[15, 3],
 		[7, 4, 15],
-		[15, 4, 7]]
+		[15, 4, 15]]
 	var table = document.getElementById('cross');
 	var result = check_answer(table, answer);
 	console.log(result)
@@ -196,8 +196,7 @@ function check_cross_use(){
 		location.href="story_choice.html"
 	}else{
 		// incorrect
-		create_popup(`アリスは回答をチェシャ猫に見せました。
-			<br>「違うね。これじゃあ白うさぎの行った場所は教えられないよ」`)
+		create_popup(`アリスは回答を白うさぎに見せました。<br>「違うよ！早く解いて！」`)
 	}
 }
 
