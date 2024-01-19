@@ -11,6 +11,10 @@ function redirect_by_answer(){
 			<br>「解けるよ！君の世界には同じようなパズルはあったりしない？数字が分からなくても解けるはずだよ！」`)
 		}else if (answer == "マーチヘア"){
 			create_popup(`「解けないなら、自動解答してくれるサイトを使うのもありだよ！...なにを言っているんだろう」`)
+		}else if (is_Lewis(answer)){
+			create_popup(`ここにパパはいない`)
+		}else{
+			create_popup(`その人はここにいないようだ。`)
 		}
 	}else if ( present_path == "minesweeper.html" ){
 		if (answer == "チェシャ猫"){
@@ -19,6 +23,10 @@ function redirect_by_answer(){
 			create_popup(`「このパズルにしかない数字が表している数がわかったら、今度は左上の数字が分かるはずだぜ。別の場所にある同じ数字も見て、どの数を表しているのかをしぼりこむんだ。うん？まだヒントが欲しい？チェシャ猫さまさまって呼んだらおしえてやるぜ。くつじょくか？」`)
 		}else if (answer == "チェシャ猫さまさま"){
 			create_popup(`「最後のほうは、候補の数字が全て盤面に出てくるってルールも大事になるぜ。もうヒントはおしまいだ。そろそろ解いてくれよ？」`)
+		}else if (is_Lewis(answer)){
+			create_popup(`ここにパパはいない`)
+		}else{
+			create_popup(`その人はここにいないようだ。`)
 		}
 	}else if (present_path == "cross_rejected.html"){
 		if (answer == "白うさぎ"){
@@ -33,6 +41,10 @@ function redirect_by_answer(){
 					パズルを見る
 				</button>
 			</div>`)
+		}else if (is_Lewis(answer)){
+			create_popup(`ここにパパはいない`)
+		}else{
+			create_popup(`その人はここにいないようだ。`)
 		}
 
 	}else if (present_path == "cross_use.html"){
@@ -44,24 +56,29 @@ function redirect_by_answer(){
 			create_popup(`『<img src="images/mi2TKWYM_FGuYfWz.png" style="width: 1em; height: 1em;"></src>進数と<img src="images/3Jtg3m8pWjsdFdTz.png" style="width: 1em; height: 1em;"></img>進数が数字を解読するヒントだよ。もっとヒントが欲しいなら、くろねこ好きって言ってよ』`)
 		}else if (answer == "くろねこ好き"){
 			create_popup(`『ありがとう！！数字がわかったなら、鍵を全部数字に直すといいよ。それから、確実に分かるところから入れていくんだ！そっかぁ、ぼくのこと好きなんだぁ』`)
+		}else if (is_Lewis(answer)){
+			create_popup(`ここにパパはいない`)
+		}else{
+			create_popup(`その人はここにいないようだ。`)
 		}
 	}else if (present_path == "story_choice.html"){
 		if (answer == "くろねこ"){
 			location.href="story_kuroneko.html"
-		}
-	}
-	if (answer == "ルイス・キャロル" || answer == "ルイスキャロル" || answer == "Lewis Carroll" ||
-		answer == "チャールズ・ラトウィッジ・ドジソン" || answer == "チャールズラトウィッジドジソン" ||
-		answer == "Charles Lutwidge Dodgson"){
-		if (present_path == "story_choice.html"){
+		}else if (is_Lewis(answer)){
 			location.href = "story_home.html"
 		}else{
-			create_popup(`ここにパパはいない`)
+			create_popup(`その人はここにいないようだ。`)
 		}
 	}
 
 	console.log(present_path);
 
+}
+
+function is_Lewis(answer){
+	return (answer == "ルイス・キャロル" || answer == "ルイスキャロル" || answer == "Lewis Carroll" ||
+		answer == "チャールズ・ラトウィッジ・ドジソン" || answer == "チャールズラトウィッジドジソン" ||
+		answer == "Charles Lutwidge Dodgson")
 }
 
 
