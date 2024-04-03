@@ -2,6 +2,9 @@ body {
 	background-color: #fcfcff;
 	color: gray;
 	padding-bottom: 120px;
+}
+
+#author{
 	font-family: "Yusei Magic", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -9,6 +12,9 @@ body {
 
 #header{
 	background-color: aliceblue;
+	font-family: "Lobster Two", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 #header div{
