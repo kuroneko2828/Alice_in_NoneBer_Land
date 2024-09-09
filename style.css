@@ -150,8 +150,16 @@ table{
 	margin-top: 50px;
 }
 
+.nanpure_kouho{
+	padding-left: 100px;
+}
+
 .kouho_space h4{
 	margin-left: 75px;
+}
+
+.nanpure_kouho h4{
+	margin-left: 50px;
 }
 
 table td{
