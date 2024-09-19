@@ -312,3 +312,16 @@ window.addEventListener('pageshow',()=>{
 		location.reload();
 	}
 });
+
+// コナミコマンド
+inputs = []
+if( present_path == '' || present_path == 'index.html') {
+	document.addEventListener('keydown', event => {
+		// 変数eventの中身はKeyboardEventオブジェクト
+		inputs.push(event.key);
+		if(inputs.slice(-10).join('') == 'ududlrlrba') {;
+			document.cookie = 'progress=3';
+			location.reload();
+		}
+	});
+}
