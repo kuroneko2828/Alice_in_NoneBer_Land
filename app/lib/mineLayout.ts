@@ -1,0 +1,60 @@
+export type MineCell = "H" | "BLK" | { src: string };
+
+/** 旧 minesweeper.html の #mine（BLK = 黒マス） */
+export const MINE_LAYOUT: MineCell[][] = [
+  [
+    { src: "/images/mi2TKWYM_FGuYfWz.png" },
+    "BLK",
+    "H",
+    "BLK",
+    { src: "/images/PauEnBcbXDSy-3GF.png" },
+    "H",
+    { src: "/images/fdrDDa-R-WTFpdtJ.png" },
+  ],
+  [
+    "H",
+    "H",
+    { src: "/images/mi2TKWYM_FGuYfWz.png" },
+    "H",
+    "H",
+    "H",
+    "H",
+  ],
+  [
+    { src: "/images/FTKTbcjU_dSd4ELT.png" },
+    "H",
+    { src: "/images/BBfmTKNrc45DYPcw.png" },
+    "H",
+    "H",
+    { src: "/images/kxjuTJf3xAAe5yTf.png" },
+    "H",
+  ],
+  [
+    "H",
+    "H",
+    "H",
+    "H",
+    "BLK",
+    { src: "/images/dyT3ksKEBSB8Q4pt.png" },
+    "H",
+  ],
+  ["H", "H", "H", "H", "H", "H", "H"],
+  [
+    { src: "/images/dyT3ksKEBSB8Q4pt.png" },
+    "H",
+    { src: "/images/7tH3ba-e74zEbr2B.png" },
+    "H",
+    { src: "/images/xBu3tDpGjjhjR27B.png" },
+    "H",
+    { src: "/images/fdrDDa-R-WTFpdtJ.png" },
+  ],
+  [
+    "H",
+    "H",
+    "BLK",
+    "H",
+    { src: "/images/PauEnBcbXDSy-3GF.png" },
+    "H",
+    "BLK",
+  ],
+];
