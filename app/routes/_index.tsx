@@ -1,7 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link, useNavigate, useSearchParams } from "@remix-run/react";
+import { useNavigate, useSearchParams } from "@remix-run/react";
 import { useCallback, useEffect, useState } from "react";
 import { ChapterLinks } from "~/components/ChapterLinks";
+import { CookieCrack } from "~/components/CookieCrack";
 import { KonamiListener } from "~/components/KonamiListener";
 import { Modal } from "~/components/Modal";
 import { isReturnHomeNavigation } from "~/lib/returnHome";
@@ -30,7 +31,7 @@ export default function Index() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden pb-16"
+      className="relative min-h-screen overflow-x-hidden overflow-y-visible pb-16"
       style={{ paddingBottom: 0 }}
     >
       <KonamiListener />
@@ -97,14 +98,7 @@ export default function Index() {
       </div>
 
       <div className="relative mt-8 text-center">
-        <Link to="/story/alice" aria-label="PLAY ME">
-          <img
-            src="/images/play_me.png"
-            alt="PLAY ME"
-            className="mx-auto h-[100px] w-auto drop-shadow-md transition hover:scale-[1.02]"
-            height={100}
-          />
-        </Link>
+        <CookieCrack src="/images/play_me.png" alt="PLAY ME" />
       </div>
 
       <div className="relative mt-6 text-center">
