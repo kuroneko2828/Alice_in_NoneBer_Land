@@ -4,10 +4,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 /** 破片計算・画像サンプリング解像度 */
 const W = 220;
 const H = 220;
-/** 画像の周囲に取る余白（キャンバス上で破片が領域外まで飛ぶようにする） */
-const PAD = 260;
+/** 画像の周囲の余白（割れ目用） */
+const PAD = 56;
 const CANVAS_W = W + 2 * PAD;
 const CANVAS_H = H + 2 * PAD;
+/** 一瞬で開く割れ目の幅（ピクセル） */
+const CRACK_GAP = 2.4;
+const CRACK_GAP_JITTER = 1.1;
+/** 割れた状態を見せてから遷移まで */
+const HOLD_MS_BEFORE_NAV = 500;
 /** トップに置いていた頃の見た目（h-[100px]）に合わせる表示倍率 */
 const DISPLAY_SCALE = 100 / W;
 
@@ -15,11 +20,7 @@ type Fragment = {
   canvas: HTMLCanvasElement;
   x: number;
   y: number;
-  vx: number;
-  vy: number;
   rot: number;
-  rotV: number;
-  alpha: number;
   bw: number;
   bh: number;
 };
@@ -122,17 +123,15 @@ function buildFragments(
       const dx = cx - W / 2;
       const dy = cy - H / 2;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-      const speed = 2.5 + Math.random() * 2.5;
+      const gap = CRACK_GAP + Math.random() * CRACK_GAP_JITTER;
+      const ox = (dx / dist) * gap;
+      const oy = (dy / dist) * gap;
 
       return {
         canvas: fc,
-        x: b.minX,
-        y: b.minY,
-        vx: (dx / dist) * speed,
-        vy: (dy / dist) * speed - 1.5,
-        rot: 0,
-        rotV: (Math.random() - 0.5) * 0.08,
-        alpha: 1,
+        x: b.minX + ox,
+        y: b.minY + oy,
+        rot: (Math.random() - 0.5) * 0.06,
         bw,
         bh,
       };
@@ -140,10 +139,25 @@ function buildFragments(
     .filter((f): f is Fragment => f !== null);
 }
 
+function drawFragments(
+  canvas: HTMLCanvasElement,
+  fragments: Fragment[]
+): void {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+  for (const f of fragments) {
+    ctx.save();
+    ctx.translate(PAD + f.x + f.bw / 2, PAD + f.y + f.bh / 2);
+    ctx.rotate(f.rot);
+    ctx.drawImage(f.canvas, -f.bw / 2, -f.bh / 2);
+    ctx.restore();
+  }
+}
+
 type Props = {
   src: string;
   alt?: string;
-  /** アニメーション完了後に遷移するルート */
   playTo?: string;
 };
 
@@ -155,79 +169,42 @@ export function CookieCrack({
   const navigate = useNavigate();
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animIdRef = useRef<number | null>(null);
-  const fragmentsRef = useRef<Fragment[]>([]);
-  const navigatedRef = useRef(false);
+  const navigateDelayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [cracked, setCracked] = useState(false);
 
-  const cancelAnim = useCallback(() => {
-    if (animIdRef.current != null) {
-      cancelAnimationFrame(animIdRef.current);
-      animIdRef.current = null;
+  const clearNavigateTimer = useCallback(() => {
+    if (navigateDelayRef.current != null) {
+      clearTimeout(navigateDelayRef.current);
+      navigateDelayRef.current = null;
     }
   }, []);
 
-  useEffect(() => cancelAnim, [cancelAnim]);
-
-  const animate = useCallback(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
-
-    const step = () => {
-      ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
-      let alive = false;
-      const fragments = fragmentsRef.current;
-
-      for (const f of fragments) {
-        if (f.alpha <= 0) continue;
-        alive = true;
-        f.x += f.vx;
-        f.y += f.vy;
-        f.vy += 0.25;
-        f.rot += f.rotV;
-        f.alpha = Math.max(0, f.alpha - 0.012);
-
-        ctx.save();
-        ctx.globalAlpha = f.alpha;
-        ctx.translate(PAD + f.x + f.bw / 2, PAD + f.y + f.bh / 2);
-        ctx.rotate(f.rot);
-        ctx.drawImage(f.canvas, -f.bw / 2, -f.bh / 2);
-        ctx.restore();
-      }
-
-      if (alive) {
-        animIdRef.current = requestAnimationFrame(step);
-      } else if (!navigatedRef.current) {
-        navigatedRef.current = true;
-        queueMicrotask(() => {
-          navigate(playTo);
-        });
-      }
-    };
-
-    animIdRef.current = requestAnimationFrame(step);
-  }, [navigate, playTo]);
+  useEffect(() => clearNavigateTimer, [clearNavigateTimer]);
 
   const handleStageClick = useCallback(() => {
     if (cracked) return;
     const img = imgRef.current;
-    if (!img) return;
+    const canvas = canvasRef.current;
+    if (!img || !canvas) return;
     setCracked(true);
 
     const go = () => {
       img.style.opacity = "0";
-      fragmentsRef.current = buildFragments(
+      const fragments = buildFragments(
         img,
         generateSites(14, W / 2, H / 2)
       );
-      animate();
+      drawFragments(canvas, fragments);
+      navigateDelayRef.current = setTimeout(() => {
+        navigateDelayRef.current = null;
+        navigate(playTo);
+      }, HOLD_MS_BEFORE_NAV);
     };
 
     if (img.complete && img.naturalWidth > 0) go();
     else img.onload = () => go();
-  }, [cracked, animate]);
+  }, [cracked, navigate, playTo]);
 
   const displayW = W * DISPLAY_SCALE;
   const displayH = H * DISPLAY_SCALE;
