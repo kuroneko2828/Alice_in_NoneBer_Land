@@ -1,5 +1,6 @@
 # Welcome to Remix!
 
+- 🌐 **公開サイト（GitHub Pages）:** [https://kuroneko2828.github.io/Alice_in_NoneBer_Land/](https://kuroneko2828.github.io/Alice_in_NoneBer_Land/)
 - 📖 [Remix docs](https://remix.run/docs)
 
 ## Development
