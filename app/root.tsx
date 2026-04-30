@@ -27,7 +27,7 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap",
   },
-  { rel: "icon", href: "/favicon.ico" },
+  { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico` },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -51,4 +51,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+/** SPA の初回 HTML 生成用（GitHub Pages など静的ホスト） */
+export function HydrateFallback() {
+  return (
+    <div className="flex min-h-screen items-center justify-center text-gray-500">
+      <p className="text-lg">読み込み中…</p>
+    </div>
+  );
 }
