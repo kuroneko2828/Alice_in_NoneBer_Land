@@ -22,7 +22,6 @@ module.exports = {
   ignorePatterns: [
     "!**/.server",
     "!**/.client",
-    "old/**",
     "public/**",
     "build/**",
   ],
