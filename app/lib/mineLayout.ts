@@ -1,32 +1,34 @@
+import { assetUrl } from "~/lib/assetUrl";
+
 export type MineCell = "H" | "BLK" | { src: string };
 
 /** 旧 minesweeper.html の #mine（BLK = 黒マス） */
 export const MINE_LAYOUT: MineCell[][] = [
   [
-    { src: "/images/mi2TKWYM_FGuYfWz.png" },
+    { src: assetUrl("images/mi2TKWYM_FGuYfWz.png") },
     "BLK",
     "H",
     "BLK",
-    { src: "/images/PauEnBcbXDSy-3GF.png" },
+    { src: assetUrl("images/PauEnBcbXDSy-3GF.png") },
     "H",
-    { src: "/images/fdrDDa-R-WTFpdtJ.png" },
+    { src: assetUrl("images/fdrDDa-R-WTFpdtJ.png") },
   ],
   [
     "H",
     "H",
-    { src: "/images/mi2TKWYM_FGuYfWz.png" },
+    { src: assetUrl("images/mi2TKWYM_FGuYfWz.png") },
     "H",
     "H",
     "H",
     "H",
   ],
   [
-    { src: "/images/FTKTbcjU_dSd4ELT.png" },
+    { src: assetUrl("images/FTKTbcjU_dSd4ELT.png") },
     "H",
-    { src: "/images/BBfmTKNrc45DYPcw.png" },
+    { src: assetUrl("images/BBfmTKNrc45DYPcw.png") },
     "H",
     "H",
-    { src: "/images/kxjuTJf3xAAe5yTf.png" },
+    { src: assetUrl("images/kxjuTJf3xAAe5yTf.png") },
     "H",
   ],
   [
@@ -35,25 +37,25 @@ export const MINE_LAYOUT: MineCell[][] = [
     "H",
     "H",
     "BLK",
-    { src: "/images/dyT3ksKEBSB8Q4pt.png" },
+    { src: assetUrl("images/dyT3ksKEBSB8Q4pt.png") },
     "H",
   ],
   ["H", "H", "H", "H", "H", "H", "H"],
   [
-    { src: "/images/dyT3ksKEBSB8Q4pt.png" },
+    { src: assetUrl("images/dyT3ksKEBSB8Q4pt.png") },
     "H",
-    { src: "/images/7tH3ba-e74zEbr2B.png" },
+    { src: assetUrl("images/7tH3ba-e74zEbr2B.png") },
     "H",
-    { src: "/images/xBu3tDpGjjhjR27B.png" },
+    { src: assetUrl("images/xBu3tDpGjjhjR27B.png") },
     "H",
-    { src: "/images/fdrDDa-R-WTFpdtJ.png" },
+    { src: assetUrl("images/fdrDDa-R-WTFpdtJ.png") },
   ],
   [
     "H",
     "H",
     "BLK",
     "H",
-    { src: "/images/PauEnBcbXDSy-3GF.png" },
+    { src: assetUrl("images/PauEnBcbXDSy-3GF.png") },
     "H",
     "BLK",
   ],

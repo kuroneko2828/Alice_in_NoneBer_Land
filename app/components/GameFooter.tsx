@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "@remix-run/react";
 import { useCallback, useState } from "react";
 import { Modal } from "~/components/Modal";
+import { assetUrl } from "~/lib/assetUrl";
 import { isLewis } from "~/lib/isLewis";
 
 export function GameFooter() {
@@ -86,7 +87,7 @@ export function GameFooter() {
         );
       } else if (a === "ねこちゃん") {
         setModalHtml(
-          `『<img src="/images/mi2TKWYM_FGuYfWz.png" style="width: 1em; height: 1em;">進数と<img src="/images/3Jtg3m8pWjsdFdTz.png" style="width: 1em; height: 1em;">進数が数字を解読するヒントだよ。もっとヒントが欲しいなら、くろねこ好きって言ってよ』`
+          `『<img src="${assetUrl("images/mi2TKWYM_FGuYfWz.png")}" style="width: 1em; height: 1em;">進数と<img src="${assetUrl("images/3Jtg3m8pWjsdFdTz.png")}" style="width: 1em; height: 1em;">進数が数字を解読するヒントだよ。もっとヒントが欲しいなら、くろねこ好きって言ってよ』`
         );
       } else if (a === "くろねこ好き") {
         setModalHtml(

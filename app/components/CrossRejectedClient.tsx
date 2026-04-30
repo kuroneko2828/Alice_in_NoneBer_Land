@@ -2,31 +2,32 @@ import { useEffect, useState } from "react";
 import { Modal } from "~/components/Modal";
 import { PuzzleCheckActions, PuzzleLayout } from "~/components/PuzzleLayout";
 import { CROSS_GRID } from "~/lib/crossLayout";
+import { assetUrl } from "~/lib/assetUrl";
 import { getProgress } from "~/lib/progress";
 
 const KOUHO_SRC = [
-  "/images/7tH3ba-e74zEbr2B.png",
-  "/images/dyT3ksKEBSB8Q4pt.png",
-  "/images/fdrDDa-R-WTFpdtJ.png",
-  "/images/FTKTbcjU_dSd4ELT.png",
-  "/images/kxjuTJf3xAAe5yTf.png",
-  "/images/mi2TKWYM_FGuYfWz.png",
-  "/images/mZjUp8tYWs6fHWae.png",
-  "/images/PauEnBcbXDSy-3GF.png",
-  "/images/xBu3tDpGjjhjR27B.png",
-  "/images/BBfmTKNrc45DYPcw.png",
-];
+  "images/7tH3ba-e74zEbr2B.png",
+  "images/dyT3ksKEBSB8Q4pt.png",
+  "images/fdrDDa-R-WTFpdtJ.png",
+  "images/FTKTbcjU_dSd4ELT.png",
+  "images/kxjuTJf3xAAe5yTf.png",
+  "images/mi2TKWYM_FGuYfWz.png",
+  "images/mZjUp8tYWs6fHWae.png",
+  "images/PauEnBcbXDSy-3GF.png",
+  "images/xBu3tDpGjjhjR27B.png",
+  "images/BBfmTKNrc45DYPcw.png",
+].map(assetUrl);
 
 const keyList = (
   <ul className="m-0 list-none space-y-1 pl-0 text-left text-sm">
     <li>
       これ以外の鍵の合計+
-      <img className="in-text" src="/images/FTKTbcjU_dSd4ELT.png" alt="" />
+      <img className="in-text" src={assetUrl("images/FTKTbcjU_dSd4ELT.png")} alt="" />
     </li>
     <li>
       binary
-      <img className="in-text" src="/images/7tH3ba-e74zEbr2B.png" alt="" />
-      <img className="in-text" src="/images/BBfmTKNrc45DYPcw.png" alt="" />
+      <img className="in-text" src={assetUrl("images/7tH3ba-e74zEbr2B.png")} alt="" />
+      <img className="in-text" src={assetUrl("images/BBfmTKNrc45DYPcw.png")} alt="" />
       で表現できる最大値：〜E＋<b>？</b>
     </li>
     <li>
@@ -38,13 +39,13 @@ const keyList = (
       and What Alice Found There
     </li>
     <li>
-      <img className="in-text" src="/images/FTKTbcjU_dSd4ELT.png" alt="" />
-      <img className="in-text" src="/images/xBu3tDpGjjhjR27B.png" alt="" />
+      <img className="in-text" src={assetUrl("images/FTKTbcjU_dSd4ELT.png")} alt="" />
+      <img className="in-text" src={assetUrl("images/xBu3tDpGjjhjR27B.png")} alt="" />
       番目の素数
     </li>
     <li>短歌の文字数</li>
     <li>
-      <img className="in-text" src="/images/FTKTbcjU_dSd4ELT.png" alt="" />
+      <img className="in-text" src={assetUrl("images/FTKTbcjU_dSd4ELT.png")} alt="" />
       桁の自然数のうち、最大の数
     </li>
   </ul>

@@ -5,19 +5,20 @@ import { PuzzleCheckActions, PuzzleLayout } from "~/components/PuzzleLayout";
 import { NANPURE_LAYOUT } from "~/lib/nanpureLayout";
 import { NANPURE_ANSWER } from "~/lib/puzzleAnswers";
 import { checkNestedAnswer } from "~/lib/puzzleCodes";
+import { assetUrl } from "~/lib/assetUrl";
 import { getProgress, setProgress } from "~/lib/progress";
 
 const KOUHO_SRC = [
-  "/images/7tH3ba-e74zEbr2B.png",
-  "/images/dyT3ksKEBSB8Q4pt.png",
-  "/images/fdrDDa-R-WTFpdtJ.png",
-  "/images/FTKTbcjU_dSd4ELT.png",
-  "/images/kxjuTJf3xAAe5yTf.png",
-  "/images/mi2TKWYM_FGuYfWz.png",
-  "/images/mZjUp8tYWs6fHWae.png",
-  "/images/PauEnBcbXDSy-3GF.png",
-  "/images/xBu3tDpGjjhjR27B.png",
-];
+  "images/7tH3ba-e74zEbr2B.png",
+  "images/dyT3ksKEBSB8Q4pt.png",
+  "images/fdrDDa-R-WTFpdtJ.png",
+  "images/FTKTbcjU_dSd4ELT.png",
+  "images/kxjuTJf3xAAe5yTf.png",
+  "images/mi2TKWYM_FGuYfWz.png",
+  "images/mZjUp8tYWs6fHWae.png",
+  "images/PauEnBcbXDSy-3GF.png",
+  "images/xBu3tDpGjjhjR27B.png",
+].map(assetUrl);
 
 export function NanpureClient() {
   const navigate = useNavigate();

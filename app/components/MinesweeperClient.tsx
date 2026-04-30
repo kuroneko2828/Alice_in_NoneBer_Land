@@ -5,20 +5,21 @@ import { PuzzleCheckActions, PuzzleLayout } from "~/components/PuzzleLayout";
 import { MINE_LAYOUT } from "~/lib/mineLayout";
 import { MINE_ANSWER } from "~/lib/puzzleAnswers";
 import { checkNestedAnswer } from "~/lib/puzzleCodes";
+import { assetUrl } from "~/lib/assetUrl";
 import { getProgress, setProgress } from "~/lib/progress";
 
 const KOUHO_SRC = [
-  "/images/7tH3ba-e74zEbr2B.png",
-  "/images/dyT3ksKEBSB8Q4pt.png",
-  "/images/fdrDDa-R-WTFpdtJ.png",
-  "/images/FTKTbcjU_dSd4ELT.png",
-  "/images/kxjuTJf3xAAe5yTf.png",
-  "/images/mi2TKWYM_FGuYfWz.png",
-  "/images/PauEnBcbXDSy-3GF.png",
-  "/images/xBu3tDpGjjhjR27B.png",
-  "/images/BBfmTKNrc45DYPcw.png",
-  "/images/black_box.png",
-];
+  "images/7tH3ba-e74zEbr2B.png",
+  "images/dyT3ksKEBSB8Q4pt.png",
+  "images/fdrDDa-R-WTFpdtJ.png",
+  "images/FTKTbcjU_dSd4ELT.png",
+  "images/kxjuTJf3xAAe5yTf.png",
+  "images/mi2TKWYM_FGuYfWz.png",
+  "images/PauEnBcbXDSy-3GF.png",
+  "images/xBu3tDpGjjhjR27B.png",
+  "images/BBfmTKNrc45DYPcw.png",
+  "images/black_box.png",
+].map(assetUrl);
 
 export function MinesweeperClient() {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ export function MinesweeperClient() {
 
   function placeFlag() {
     if (!sel) return;
-    placeFromKouho("/images/flag.png");
+    placeFromKouho(assetUrl("images/flag.png"));
   }
 
   function check() {

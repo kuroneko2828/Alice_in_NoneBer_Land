@@ -5,6 +5,7 @@ import { ChapterLinks } from "~/components/ChapterLinks";
 import { CookieCrack } from "~/components/CookieCrack";
 import { KonamiListener } from "~/components/KonamiListener";
 import { Modal } from "~/components/Modal";
+import { assetUrl } from "~/lib/assetUrl";
 import { isReturnHomeNavigation } from "~/lib/returnHome";
 
 export const meta: MetaFunction = () => {
@@ -98,7 +99,7 @@ export default function Index() {
       </div>
 
       <div className="relative mt-8 text-center">
-        <CookieCrack src="/images/play_me.png" alt="PLAY ME" />
+        <CookieCrack src={assetUrl("images/play_me.png")} alt="PLAY ME" />
       </div>
 
       <div className="relative mt-6 text-center">
