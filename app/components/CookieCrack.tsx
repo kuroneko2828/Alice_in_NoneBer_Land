@@ -1,5 +1,5 @@
 import { useNavigate } from "@remix-run/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 /** 破片計算・画像サンプリング解像度 */
 const W = 220;
@@ -173,6 +173,23 @@ export function CookieCrack({
 
   const [cracked, setCracked] = useState(false);
 
+  /** 初回ハイドレーション直後に解像デコードが済んでいないと表示されないブラウザ対策 */
+  useLayoutEffect(() => {
+    const img = imgRef.current;
+    if (!img || cracked) return;
+
+    const kickDecode = () => {
+      if (!imgRef.current || imgRef.current !== img || img.naturalWidth === 0)
+        return;
+      void img.decode().catch(() => {
+        /* decode 未対応・破損時は描画に任せる */
+      });
+    };
+
+    if (img.complete) kickDecode();
+    else img.addEventListener("load", kickDecode, { once: true });
+  }, [src, cracked]);
+
   const clearNavigateTimer = useCallback(() => {
     if (navigateDelayRef.current != null) {
       clearTimeout(navigateDelayRef.current);
@@ -228,7 +245,7 @@ export function CookieCrack({
           ref={canvasRef}
           width={CANVAS_W}
           height={CANVAS_H}
-          className="pointer-events-none absolute max-w-none"
+          className="pointer-events-none absolute z-0 max-w-none"
           style={{
             left: "50%",
             top: "50%",
@@ -245,7 +262,9 @@ export function CookieCrack({
           alt={alt}
           width={W}
           height={H}
-          className="absolute left-0 top-0 max-w-none select-none"
+          loading="eager"
+          decoding="sync"
+          className="absolute left-0 top-0 z-[1] max-w-none select-none"
           style={{
             width: displayW,
             height: displayH,

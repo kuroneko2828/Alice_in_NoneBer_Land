@@ -11,6 +11,7 @@ import "./tailwind.css";
 import "~/styles/alice.css";
 
 import { ProgressTrap } from "~/components/ProgressTrap";
+import { assetUrl } from "~/lib/assetUrl";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -28,6 +29,12 @@ export const links: LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap",
   },
   { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico` },
+  {
+    rel: "preload",
+    as: "image",
+    href: assetUrl("images/play_me.png"),
+    fetchPriority: "high",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

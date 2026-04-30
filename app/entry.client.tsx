@@ -8,11 +8,21 @@ import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
 
-startTransition(() => {
-  hydrateRoot(
-    document,
-    <StrictMode>
-      <RemixBrowser />
-    </StrictMode>
-  );
+function hydrate() {
+  startTransition(() => {
+    hydrateRoot(
+      document,
+      <StrictMode>
+        <RemixBrowser />
+      </StrictMode>
+    );
+  });
+}
+
+/**
+ * SPA は初回 HTML がフォールバックのため、インラインスクリプト後のレイアウトを1フレーム挟むと
+ * 画像の初回描画が安定することがある。
+ */
+requestAnimationFrame(() => {
+  hydrate();
 });
