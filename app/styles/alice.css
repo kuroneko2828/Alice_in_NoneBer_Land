@@ -96,7 +96,10 @@
   padding: 1em;
 }
 
+/* Tailwind preflight の img{display:block} を打ち消し、文の途中に置く */
 .in-text {
+  display: inline-block;
+  vertical-align: -0.15em;
   width: 1em;
   height: 1em;
 }
