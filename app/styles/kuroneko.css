@@ -1,0 +1,18 @@
+/* story_kuroneko.html 由来。グローバルの物語スタイルを当てないための最小限 */
+.kuroneko {
+  text-align: center;
+  min-height: 120vh;
+  margin-top: 20px;
+}
+
+/* 無骨なリセット（影・ホバー等の遊びなし） */
+.kuroneko-reset-btn {
+  font-family: ui-monospace, "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: #111;
+  background: #ddd;
+  border: 3px solid #111;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+}

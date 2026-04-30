@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* サイト全体はライトテーマ（#fcfcff は root の body クラスで指定） */
+html,
+body {
+  @apply bg-[#fcfcff];
+}

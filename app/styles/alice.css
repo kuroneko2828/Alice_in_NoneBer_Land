@@ -1,0 +1,459 @@
+/* メインカラー #95ccff / 背景 #fcfcff は維持。物語ページはやわらかくブラッシュアップ */
+:root {
+  --alice-bg: #fcfcff;
+  --alice-accent: #95ccff;
+  --alice-accent-deep: #6aa8e8;
+  --alice-pink: #ffc3c3;
+  --alice-cream: #fff6e6;
+  --alice-text: #6b7280;
+  --alice-story: #ee8992;
+  --alice-header-border: #b9c6d2;
+}
+
+#author {
+  font-family: "Yusei Magic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#header {
+  background: linear-gradient(180deg, #f0f7ff 0%, #e8f2fc 100%);
+  font-family: "Lobster Two", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border-bottom: 1px solid rgba(149, 204, 255, 0.35);
+  box-shadow: 0 4px 20px rgba(149, 204, 255, 0.12);
+}
+
+#header div {
+  font-size: 20pt;
+  padding: 10px 20px 0 20px;
+  border-bottom: 3px solid var(--alice-header-border);
+}
+
+#header div p {
+  margin-bottom: 0;
+}
+
+.story {
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  width: min(60vw, 720px);
+  max-width: 100%;
+  border: dashed 2px var(--alice-pink);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 8px var(--alice-cream),
+    0 12px 40px rgba(238, 137, 146, 0.12);
+  padding: 20px;
+  color: var(--alice-story);
+  background: linear-gradient(180deg, #fffaf3 0%, var(--alice-cream) 100%);
+}
+
+.story-title {
+  border-radius: 8px 8px 0 0;
+  margin: -20px -20px 8px -20px;
+  font-size: 1.3em;
+  padding: 12px 0;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+.story p {
+  margin: 0;
+  padding: 0;
+}
+
+/* 横罫（ノート風）のみ。縦のストライプは可読性のため削除 */
+.story-content {
+  background-image: linear-gradient(
+    180deg,
+    rgba(237, 119, 128, 0) 0%,
+    rgba(237, 119, 128, 0) 95%,
+    #ed7780 100%
+  );
+  background-size: 100% 2em;
+  line-height: 2;
+  padding: 8px 12px 24px 12px;
+  border-radius: 8px;
+}
+
+#title {
+  margin: 20px;
+  font-size: 32pt;
+}
+
+#book-title {
+  font-family: "Lobster Two", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.key {
+  border: 1px solid var(--alice-accent);
+  padding: 1em;
+}
+
+.in-text {
+  width: 1em;
+  height: 1em;
+}
+
+.box26 {
+  position: relative;
+  margin: 2em 0;
+  padding: 0.75em 1.1em;
+  border: solid 3px var(--alice-accent);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 24px rgba(149, 204, 255, 0.15);
+}
+
+.box26 .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: var(--alice-bg);
+  color: var(--alice-accent);
+  font-weight: bold;
+}
+
+.box26 ul {
+  margin: 10px 20px;
+  padding: 0;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100px;
+  background: linear-gradient(180deg, #f5faff 0%, #e8f2fc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 1rem;
+  border-top: 1px solid rgba(149, 204, 255, 0.35);
+  box-shadow: 0 -6px 24px rgba(149, 204, 255, 0.12);
+  z-index: 40;
+}
+
+#answer {
+  color: gray;
+}
+
+#answer::placeholder {
+  color: lightgray;
+}
+
+table {
+  border-collapse: collapse;
+  color: gray;
+}
+
+.iquestion {
+  margin-right: 100px;
+  margin-top: 50px;
+}
+
+.ikouho_space {
+  margin-top: 50px;
+}
+
+/* 旧レイアウトの大きな左余白は撤去（パズルは PuzzleLayout で整列） */
+.nanpure_kouho {
+  padding-left: 0;
+}
+
+.kouho_space h4 {
+  margin-left: 0;
+}
+
+.nanpure_kouho h4 {
+  margin-left: 0;
+}
+
+.puzzle-page {
+  max-width: 100%;
+}
+
+.puzzle-board-card {
+  border-radius: 1rem;
+  border: 2px solid rgba(149, 204, 255, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 40px rgba(149, 204, 255, 0.12);
+  padding: 1.25rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .puzzle-board-card {
+    padding: 1.75rem 2rem;
+  }
+}
+
+.puzzle-kouho-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--alice-accent);
+}
+
+table td {
+  border: solid 1pt var(--alice-accent);
+  text-align: center;
+}
+
+.question {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+/* パズル盤：td は table-cell のまま（flex を付けると列が縦一列に壊れる）。画像は絶対配置で中央 */
+.question td {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+
+.question td img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  object-fit: contain;
+  max-width: 90%;
+  max-height: 90%;
+  margin: 0;
+}
+
+#nanpure tr:first-child {
+  border-top: solid 2pt var(--alice-accent);
+}
+
+#nanpure tr:nth-child(3n) {
+  border-bottom: solid 2pt var(--alice-accent);
+}
+
+#nanpure td:first-child {
+  border-left: solid 2pt var(--alice-accent);
+}
+
+#nanpure td:nth-child(3n) {
+  border-right: solid 2pt var(--alice-accent);
+}
+
+.black-box {
+  background-color: gray;
+}
+
+.clicked {
+  background-color: antiquewhite;
+}
+
+td:not(.holder):not(.kouho_masu) {
+  opacity: 50%;
+}
+
+.next {
+  margin-top: 50px;
+}
+
+.submit {
+  margin-top: 30px;
+}
+
+.large-btn {
+  font-weight: bold;
+  border-width: 3px;
+}
+
+.small-btn {
+  font-size: 8pt;
+  margin-top: 10px;
+  margin-left: 40px;
+  width: 120px;
+}
+
+/* パズル：クリア／フラグ（候補の下・中央。Check より目立たないセカンダリ） */
+.btn.puzzle-sub-btn {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  margin: 0;
+  padding: 0.35rem 0.9rem;
+  width: 100%;
+  max-width: 15rem;
+  align-self: center;
+  text-align: center;
+  font-weight: 400;
+  color: var(--alice-text);
+  border-width: 1px;
+  border-color: rgba(149, 204, 255, 0.5);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: none;
+}
+
+.btn.puzzle-sub-btn:hover {
+  background: rgba(149, 204, 255, 0.1);
+  border-color: rgba(149, 204, 255, 0.65);
+  color: var(--alice-accent-deep);
+}
+
+.puzzle-board-card .puzzle-sub-btn-row {
+  display: flex;
+  width: 100%;
+  max-width: 20rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  align-self: center;
+}
+
+.puzzle-board-card .puzzle-sub-btn-row .puzzle-sub-btn {
+  flex: 1 1 auto;
+  min-width: 8.5rem;
+  max-width: 12rem;
+}
+
+.submit-btn {
+  color: var(--alice-accent);
+  border-color: var(--alice-accent);
+}
+
+/* Bootstrap 相当（CDN なし） */
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn-outline-info {
+  color: var(--alice-accent);
+  border-color: var(--alice-accent);
+  background: #fff;
+}
+
+.btn-outline-info:hover {
+  background-color: var(--alice-accent);
+  color: #fff;
+}
+
+#modal {
+  top: 20%;
+  font-size: 16pt;
+  max-width: inherit;
+}
+
+.modal-dialog {
+  max-width: inherit;
+  width: 80vw;
+}
+
+#kouho td {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+
+#kouho td img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  object-fit: contain;
+  max-width: 90%;
+  max-height: 90%;
+  margin: 0;
+}
+
+/* 候補テーブル見出し行（colspan がある場合は通常セルに戻す） */
+#kouho td[colspan] {
+  position: static;
+  height: auto;
+  min-height: 0;
+  padding: 0.25rem 0;
+}
+
+#kouho td[colspan] img {
+  position: static;
+  transform: none;
+  display: inline;
+  max-width: none;
+  max-height: none;
+}
+
+.chapter {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 16pt;
+  color: var(--alice-accent);
+}
+
+.chapter li {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: none;
+  list-style: none;
+}
+
+.chapter li a {
+  color: var(--alice-accent);
+}
+
+#skip {
+  display: none;
+  color: var(--alice-accent);
+}
+
+.input-group {
+  display: flex;
+  width: 100%;
+  max-width: 48rem;
+  align-items: stretch;
+}
+
+.form-control {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 1px solid #cfe8ff;
+  border-radius: 0.5rem 0 0 0.5rem;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: #95ccff;
+  box-shadow: 0 0 0 3px rgba(149, 204, 255, 0.25);
+}
+
+/* story_kuroneko 専用は kuroneko.css で上書きしない（ルート側で分離） */
