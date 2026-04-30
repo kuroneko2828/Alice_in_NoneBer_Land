@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "@remix-run/react";
 
 type Props = {
   rule: ReactNode;
@@ -39,14 +40,14 @@ export function PuzzleCheckActions({
       >
         {checkLabel}
       </button>
-      <a
+      <Link
         id="skip"
-        href={skipHref}
+        to={skipHref}
         style={{ display: showSkip ? "inline" : "none" }}
         className="text-sm text-[#95ccff] underline decoration-[#95ccff]/40 underline-offset-2"
       >
         ( Skip )
-      </a>
+      </Link>
     </div>
   );
 }
