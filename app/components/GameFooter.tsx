@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { Modal } from "~/components/Modal";
 import { assetUrl } from "~/lib/assetUrl";
 import { isLewis } from "~/lib/isLewis";
+import { getStoryChoiceHiddenComment } from "~/lib/storyChoiceHiddenComments";
 
 export function GameFooter() {
   const navigate = useNavigate();
@@ -102,6 +103,11 @@ export function GameFooter() {
     }
 
     if (path === "/story/choice") {
+      const hidden = getStoryChoiceHiddenComment(a);
+      if (hidden) {
+        setModalHtml(hidden);
+        return;
+      }
       if (a === "くろねこ") {
         navigate("/story/kuroneko");
         return;
