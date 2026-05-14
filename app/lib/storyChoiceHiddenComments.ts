@@ -17,7 +17,7 @@ const HIDDEN_COMMENTS: Record<string, string> = {
     "「お茶菓子がないぞ！　こんなのお茶会じゃない！」",
 
   アリス:
-    "「わたしは、おうちに帰りたい」",
+    "「私は、おうちに帰りたい」",
 };
 
 export function getStoryChoiceHiddenComment(answer: string): string | null {
