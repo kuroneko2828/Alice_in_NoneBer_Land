@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "@remix-run/react";
 import { Modal } from "~/components/Modal";
 import { PuzzleCheckActions, PuzzleLayout } from "~/components/PuzzleLayout";
@@ -6,7 +6,7 @@ import { CROSS_GRID } from "~/lib/crossLayout";
 import { CROSS_USE_ANSWER } from "~/lib/puzzleAnswers";
 import { checkNestedAnswer } from "~/lib/puzzleCodes";
 import { assetUrl } from "~/lib/assetUrl";
-import { getProgress, setProgress } from "~/lib/progress";
+import { getProgress, setProgress, useProgress } from "~/lib/progress";
 
 const KOUHO_SRC = [
   "images/7tH3ba-e74zEbr2B.png",
@@ -69,11 +69,8 @@ export function CrossUseClient() {
   const [filled, setFilled] = useState<(string | null)[][]>(initial);
   const [sel, setSel] = useState<{ r: number; h: number } | null>(null);
   const [modal, setModal] = useState<string | null>(null);
-  const [showSkip, setShowSkip] = useState(false);
-
-  useEffect(() => {
-    setShowSkip(getProgress() >= 3);
-  }, []);
+  const progress = useProgress();
+  const showSkip = progress >= 3;
 
   function placeFromKouho(src: string | null) {
     if (!sel) return;
@@ -112,10 +109,10 @@ export function CrossUseClient() {
   return (
     <>
       <PuzzleLayout rule={rule}>
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:justify-center lg:gap-8">
-            <div className="flex justify-center overflow-x-auto lg:flex-1">
-              <table id="cross" className="question mx-auto shrink-0">
+        <div className="flex flex-col gap-3 sm:gap-8">
+          <div className="flex flex-col items-stretch gap-3 sm:gap-6 lg:flex-row lg:items-start lg:justify-center lg:gap-8">
+            <div className="puzzle-grid-wrap shrink-0 lg:flex-1">
+              <table id="cross" className="question puzzle-cols-4">
                 <tbody>
                   {CROSS_GRID.map((row, ri) => {
                     let hi = 0;
@@ -143,19 +140,14 @@ export function CrossUseClient() {
                                 }
                               >
                                 {filled[ri][idx] ? (
-                                  <img
-                                    src={filled[ri][idx]!}
-                                    width={46}
-                                    height={46}
-                                    alt=""
-                                  />
+                                  <img src={filled[ri][idx]!} alt="" />
                                 ) : null}
                               </td>
                             );
                           }
                           return (
                             <td key={ci}>
-                              <img src={cell.src} width={30} height={30} alt="" />
+                              <img src={cell.src} alt="" />
                             </td>
                           );
                         })}
@@ -165,16 +157,16 @@ export function CrossUseClient() {
                 </tbody>
               </table>
             </div>
-            <div className="box26 min-w-0 flex-1 lg:max-w-md">
+            <div className="box26 min-w-0 flex-1 text-sm sm:text-base lg:max-w-md">
               <h5 className="box-title text-center">鍵</h5>
               {keyList}
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-4 border-t border-[#95ccff]/20 pt-6">
+          <div className="flex flex-col items-center gap-2 border-t border-[#95ccff]/20 pt-3 sm:gap-4 sm:pt-6">
             <h4 className="puzzle-kouho-title m-0">候補</h4>
-            <div className="w-full overflow-x-auto">
-              <table id="kouho" className="mx-auto">
+            <div className="w-full max-w-full">
+              <table id="kouho" className="kouho-cols-8">
                 <tbody>
                   <tr>
                     {KOUHO_SRC.slice(0, 8).map((src) => (
@@ -183,7 +175,7 @@ export function CrossUseClient() {
                         className="kouho_masu"
                         onClick={() => placeFromKouho(src)}
                       >
-                        <img src={src} width={30} height={30} alt="" />
+                        <img src={src} alt="" />
                       </td>
                     ))}
                   </tr>
@@ -194,7 +186,7 @@ export function CrossUseClient() {
                         className="kouho_masu"
                         onClick={() => placeFromKouho(src)}
                       >
-                        <img src={src} width={30} height={30} alt="" />
+                        <img src={src} alt="" />
                       </td>
                     ))}
                   </tr>

@@ -44,11 +44,11 @@ export default function StoryAlice() {
           <p style={{ fontWeight: "bold", textAlign: "center" }}>
             〜Welcome to NoneBer Land〜
           </p>
-          <p style={{ padding: "0 50px 0 50px" }}>
+          <p className="story-inset" style={{ padding: "0 50px 0 50px" }}>
             この国の住民はパズルが大好き。
             パズルでいろんなことが解決します。
           </p>
-          <p style={{ padding: "0 50px 0 50px" }}>
+          <p className="story-inset" style={{ padding: "0 50px 0 50px" }}>
             でも気をつけて！この国の数字はあなたの国の数字とは違います。
             もし、どうしても解けないパズルだったら、パズルを出してきた人や、周りの人に助けを求めるといいかもしれません。
           </p>

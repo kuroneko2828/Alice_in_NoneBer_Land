@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "@remix-run/react";
 import { Modal } from "~/components/Modal";
 import { PuzzleCheckActions, PuzzleLayout } from "~/components/PuzzleLayout";
@@ -6,7 +6,7 @@ import { MINE_LAYOUT } from "~/lib/mineLayout";
 import { MINE_ANSWER } from "~/lib/puzzleAnswers";
 import { checkNestedAnswer } from "~/lib/puzzleCodes";
 import { assetUrl } from "~/lib/assetUrl";
-import { getProgress, setProgress } from "~/lib/progress";
+import { getProgress, setProgress, useProgress } from "~/lib/progress";
 
 const KOUHO_SRC = [
   "images/7tH3ba-e74zEbr2B.png",
@@ -30,11 +30,8 @@ export function MinesweeperClient() {
   const [filled, setFilled] = useState<(string | null)[][]>(initial);
   const [sel, setSel] = useState<{ r: number; h: number } | null>(null);
   const [modal, setModal] = useState<string | null>(null);
-  const [showSkip, setShowSkip] = useState(false);
-
-  useEffect(() => {
-    setShowSkip(getProgress() >= 2);
-  }, []);
+  const progress = useProgress();
+  const showSkip = progress >= 2;
 
   function placeFromKouho(src: string | null) {
     if (!sel) return;
@@ -81,9 +78,9 @@ export function MinesweeperClient() {
   return (
     <>
       <PuzzleLayout rule={rule}>
-        <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
-          <div className="flex min-w-0 flex-1 justify-center overflow-x-auto">
-            <table id="mine" className="question mx-auto shrink-0">
+        <div className="flex flex-col items-stretch gap-3 sm:gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
+          <div className="puzzle-grid-wrap min-w-0 shrink-0">
+            <table id="mine" className="question puzzle-cols-7">
               <tbody>
                 {MINE_LAYOUT.map((row, ri) => {
                   let hi = 0;
@@ -111,24 +108,14 @@ export function MinesweeperClient() {
                               }
                             >
                               {filled[ri][idx] ? (
-                                <img
-                                  src={filled[ri][idx]!}
-                                  width={46}
-                                  height={46}
-                                  alt=""
-                                />
+                                <img src={filled[ri][idx]!} alt="" />
                               ) : null}
                             </td>
                           );
                         }
                         return (
                           <td key={ci}>
-                            <img
-                              src={cell.src}
-                              width={30}
-                              height={30}
-                              alt=""
-                            />
+                            <img src={cell.src} alt="" />
                           </td>
                         );
                       })}
@@ -139,9 +126,9 @@ export function MinesweeperClient() {
             </table>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-3 lg:w-auto lg:min-w-[240px] lg:max-w-[300px]">
+          <div className="flex w-full flex-col items-center gap-2 sm:gap-3 lg:w-auto lg:min-w-[240px] lg:max-w-[300px]">
             <h4 className="puzzle-kouho-title m-0 w-full text-center">候補</h4>
-            <table id="kouho" className="mx-auto">
+            <table id="kouho" className="kouho-cols-4">
               <tbody>
                 <tr>
                   {KOUHO_SRC.slice(0, 4).map((src) => (
@@ -150,7 +137,7 @@ export function MinesweeperClient() {
                       className="kouho_masu"
                       onClick={() => placeFromKouho(src)}
                     >
-                      <img src={src} width={30} height={30} alt="" />
+                      <img src={src} alt="" />
                     </td>
                   ))}
                 </tr>
@@ -161,7 +148,7 @@ export function MinesweeperClient() {
                       className="kouho_masu"
                       onClick={() => placeFromKouho(src)}
                     >
-                      <img src={src} width={30} height={30} alt="" />
+                      <img src={src} alt="" />
                     </td>
                   ))}
                 </tr>
@@ -174,8 +161,7 @@ export function MinesweeperClient() {
                     >
                       <img
                         src={src}
-                        width={src.includes("black") ? 48 : 30}
-                        height={src.includes("black") ? 48 : 30}
+                        className={src.includes("black") ? "kouho-img-lg" : undefined}
                         alt=""
                       />
                     </td>

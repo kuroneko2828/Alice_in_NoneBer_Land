@@ -11,9 +11,9 @@ type Props = {
  */
 export function PuzzleLayout({ rule, children }: Props) {
   return (
-    <div id="content" className="puzzle-page pb-28 px-4">
-      <div className="mx-auto mb-6 max-w-2xl">{rule}</div>
-      <div className="puzzle-board-card mx-auto max-w-5xl">{children}</div>
+    <div id="content" className="puzzle-page px-2 pb-[5.5rem] sm:px-4 sm:pb-28">
+      <div className="puzzle-rule mx-auto mb-3 max-w-2xl sm:mb-6">{rule}</div>
+      <div className="puzzle-board-card mx-auto w-full max-w-5xl">{children}</div>
     </div>
   );
 }
@@ -32,7 +32,7 @@ export function PuzzleCheckActions({
   checkLabel = "Check",
 }: PuzzleActionsProps) {
   return (
-    <div className="mt-8 flex flex-col items-center gap-3 border-t border-[#95ccff]/25 pt-6">
+    <div className="puzzle-check-actions mt-4 flex flex-col items-center gap-3 border-t border-[#95ccff]/25 pt-4 sm:mt-8 sm:pt-6">
       <button
         type="button"
         className="btn btn-outline-info submit-btn large-btn rounded-full px-12 py-3 text-lg font-semibold shadow-sm"
@@ -40,14 +40,15 @@ export function PuzzleCheckActions({
       >
         {checkLabel}
       </button>
-      <Link
-        id="skip"
-        to={skipHref}
-        style={{ display: showSkip ? "inline" : "none" }}
-        className="text-sm text-[#95ccff] underline decoration-[#95ccff]/40 underline-offset-2"
-      >
-        ( Skip )
-      </Link>
+      {showSkip ? (
+        <Link
+          id="skip"
+          to={skipHref}
+          className="text-sm text-[#95ccff] underline decoration-[#95ccff]/40 underline-offset-2"
+        >
+          ( Skip )
+        </Link>
+      ) : null}
     </div>
   );
 }

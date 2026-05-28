@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "~/components/Modal";
 import { PuzzleCheckActions, PuzzleLayout } from "~/components/PuzzleLayout";
 import { CROSS_GRID } from "~/lib/crossLayout";
 import { assetUrl } from "~/lib/assetUrl";
-import { getProgress } from "~/lib/progress";
+import { useProgress } from "~/lib/progress";
 
 const KOUHO_SRC = [
   "images/7tH3ba-e74zEbr2B.png",
@@ -53,11 +53,8 @@ const keyList = (
 
 export function CrossRejectedClient() {
   const [modal, setModal] = useState<string | null>(null);
-  const [showSkip, setShowSkip] = useState(false);
-
-  useEffect(() => {
-    setShowSkip(getProgress() >= 3);
-  }, []);
+  const progress = useProgress();
+  const showSkip = progress >= 3;
 
   function checkCrossRejected() {
     setModal(
@@ -79,10 +76,10 @@ export function CrossRejectedClient() {
   return (
     <>
       <PuzzleLayout rule={rule}>
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:justify-center lg:gap-8">
-            <div className="flex justify-center overflow-x-auto lg:flex-1">
-              <table id="mine" className="question mx-auto shrink-0">
+        <div className="flex flex-col gap-3 sm:gap-8">
+          <div className="flex flex-col items-stretch gap-3 sm:gap-6 lg:flex-row lg:items-start lg:justify-center lg:gap-8">
+            <div className="puzzle-grid-wrap shrink-0 lg:flex-1">
+              <table id="mine" className="question puzzle-cols-4">
                 <tbody>
                   {CROSS_GRID.map((row, ri) => (
                     <tr key={ri}>
@@ -99,7 +96,7 @@ export function CrossRejectedClient() {
                         }
                         return (
                           <td key={ci}>
-                            <img src={cell.src} width={30} height={30} alt="" />
+                            <img src={cell.src} alt="" />
                           </td>
                         );
                       })}
@@ -108,27 +105,27 @@ export function CrossRejectedClient() {
                 </tbody>
               </table>
             </div>
-            <div className="box26 min-w-0 flex-1 lg:max-w-md">
+            <div className="box26 min-w-0 flex-1 text-sm sm:text-base lg:max-w-md">
               <h5 className="box-title text-center">鍵</h5>
               {keyList}
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-4 border-t border-[#95ccff]/20 pt-6">
+          <div className="flex flex-col items-center gap-2 border-t border-[#95ccff]/20 pt-3 sm:gap-4 sm:pt-6">
             <h4 className="puzzle-kouho-title m-0">候補</h4>
-            <table id="kouho" className="mx-auto max-w-full">
+            <table id="kouho" className="kouho-cols-8 max-w-full">
               <tbody>
                 <tr>
                   {KOUHO_SRC.slice(0, 8).map((src) => (
                     <td key={src} className="kouho_masu">
-                      <img src={src} width={30} height={30} alt="" />
+                      <img src={src} alt="" />
                     </td>
                   ))}
                 </tr>
                 <tr>
                   {KOUHO_SRC.slice(8, 10).map((src) => (
                     <td key={src} className="kouho_masu">
-                      <img src={src} width={30} height={30} alt="" />
+                      <img src={src} alt="" />
                     </td>
                   ))}
                 </tr>

@@ -33,7 +33,7 @@ export const links: LinksFunction = () => [
     rel: "preload",
     as: "image",
     href: assetUrl("images/play_me.png"),
-    fetchPriority: "high",
+    fetchpriority: "high",
   },
 ];
 
