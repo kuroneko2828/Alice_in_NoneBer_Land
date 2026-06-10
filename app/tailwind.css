@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 /* サイト全体はライトテーマ（#fcfcff は root の body クラスで指定） */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 html,
 body {
   @apply bg-[#fcfcff];
+  overflow-x: hidden;
 }

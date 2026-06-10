@@ -15,8 +15,9 @@ export function StoryShell({
 }: Props) {
   return (
     <div
-      className="min-h-screen bg-[#fcfcff] pb-32 text-gray-500"
-      style={{ paddingBottom: padBottom ? 120 : undefined }}
+      className={`story-shell min-h-screen bg-[#fcfcff] text-gray-500 ${
+        showHeader ? "story-shell--with-header" : ""
+      } ${padBottom ? "story-shell--pad-footer" : "pb-32"}`}
     >
       {showHeader ? <SiteHeader /> : null}
       {children}

@@ -23,6 +23,7 @@
   font-style: normal;
   border-bottom: 1px solid rgba(149, 204, 255, 0.35);
   box-shadow: 0 4px 20px rgba(149, 204, 255, 0.12);
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 #header div {
@@ -68,41 +69,87 @@
 
 /* 横罫（ノート風）のみ。縦のストライプは可読性のため削除 */
 .story-content {
+  --story-line: 2em;
   background-image: linear-gradient(
     180deg,
     rgba(237, 119, 128, 0) 0%,
-    rgba(237, 119, 128, 0) 95%,
+    rgba(237, 119, 128, 0) 94%,
+    #ed7780 94%,
     #ed7780 100%
   );
-  background-size: 100% 2em;
-  line-height: 2;
+  background-size: 100% var(--story-line);
+  background-position: 0 0;
+  line-height: var(--story-line);
   padding: 8px 12px 24px 12px;
   border-radius: 8px;
 }
 
+.story-shell {
+  padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+  padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+  padding-bottom: calc(8rem + env(safe-area-inset-bottom, 0px));
+}
+
+.story-shell--pad-footer {
+  padding-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.story-shell--with-header {
+  padding-top: 0.75rem;
+}
+
 @media (max-width: 767px) {
   .story {
-    width: calc(100% - 1.25rem);
-    margin-top: 2rem;
-    padding: 14px 12px;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+    padding: 16px 12px;
+    box-shadow:
+      0 0 0 4px var(--alice-cream),
+      0 8px 24px rgba(238, 137, 146, 0.12);
   }
 
   .story-title {
-    margin: -14px -12px 8px -12px;
-    font-size: 1.15em;
-    padding: 10px 0;
+    margin: -16px -12px 12px -12px;
+    font-size: 1.1rem;
+    padding: 12px 8px;
+    line-height: 1.4;
   }
 
   .story-content {
-    font-size: 0.9rem;
-    line-height: 1.85;
-    background-size: 100% 1.85em;
-    padding: 6px 6px 20px 6px;
+    --story-line: 27px;
+    font-size: 14px;
+    line-height: var(--story-line);
+    background-size: 100% var(--story-line);
+    padding: 4px 8px calc(24px + env(safe-area-inset-bottom, 0px)) 8px;
+    overflow-wrap: anywhere;
+  }
+
+  @supports (background-size: 100% 1lh) {
+    .story-content {
+      line-height: 1.75;
+      --story-line: 1lh;
+      background-size: 100% 1lh;
+    }
   }
 
   .story-inset {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .story-shell--with-header {
+    padding-top: 1rem;
+  }
+
+  .story-shell--with-header .story {
+    margin-top: 0.75rem;
+  }
+
+  .next {
+    margin-top: 1.5rem;
+    margin-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 
@@ -168,7 +215,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 1rem;
+  padding: 12px max(1rem, env(safe-area-inset-right, 0px))
+    calc(12px + env(safe-area-inset-bottom, 0px))
+    max(1rem, env(safe-area-inset-left, 0px));
   border-top: 1px solid rgba(149, 204, 255, 0.35);
   box-shadow: 0 -6px 24px rgba(149, 204, 255, 0.12);
   z-index: 40;
@@ -341,6 +390,32 @@ table {
 
   #kouho.kouho-cols-8 {
     --kouho-cell: min(44px, calc((100vw - 2.5rem) / 8));
+  }
+
+  @supports (width: 100dvw) {
+    .question.puzzle-cols-9 {
+      --puzzle-cell: min(50px, calc((100dvw - 2.5rem) / 9));
+    }
+
+    .question.puzzle-cols-7 {
+      --puzzle-cell: min(50px, calc((100dvw - 2.5rem) / 7));
+    }
+
+    .question.puzzle-cols-4 {
+      --puzzle-cell: min(50px, calc((100dvw - 2.5rem) / 4));
+    }
+
+    #kouho.kouho-cols-3 {
+      --kouho-cell: min(50px, calc((100dvw - 2.5rem) / 9));
+    }
+
+    #kouho.kouho-cols-4 {
+      --kouho-cell: min(50px, calc((100dvw - 2.5rem) / 8));
+    }
+
+    #kouho.kouho-cols-8 {
+      --kouho-cell: min(44px, calc((100dvw - 2.5rem) / 8));
+    }
   }
 }
 
