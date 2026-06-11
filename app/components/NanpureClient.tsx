@@ -70,7 +70,7 @@ export function NanpureClient() {
   return (
     <>
       <PuzzleLayout rule={rule}>
-        <div className="flex flex-col items-stretch gap-3 sm:gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
+        <div className="puzzle-board-row flex flex-col items-stretch gap-3 sm:gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
           <div className="puzzle-grid-wrap min-w-0 shrink-0">
             <table id="nanpure" className="question puzzle-cols-9">
               <tbody>
@@ -115,7 +115,7 @@ export function NanpureClient() {
             </table>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-2 sm:gap-4 lg:w-auto lg:min-w-[220px] lg:max-w-[280px]">
+          <div className="puzzle-kouho-panel flex w-full flex-col items-center gap-2 sm:gap-4 lg:w-auto lg:min-w-[220px] lg:max-w-[280px]">
             <h4 className="puzzle-kouho-title m-0 w-full text-center">候補</h4>
             <table id="kouho" className="kouho-cols-3">
               <tbody>

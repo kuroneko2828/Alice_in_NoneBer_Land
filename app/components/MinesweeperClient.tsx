@@ -78,7 +78,7 @@ export function MinesweeperClient() {
   return (
     <>
       <PuzzleLayout rule={rule}>
-        <div className="flex flex-col items-stretch gap-3 sm:gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
+        <div className="puzzle-board-row flex flex-col items-stretch gap-3 sm:gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
           <div className="puzzle-grid-wrap min-w-0 shrink-0">
             <table id="mine" className="question puzzle-cols-7">
               <tbody>
@@ -126,7 +126,7 @@ export function MinesweeperClient() {
             </table>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-2 sm:gap-3 lg:w-auto lg:min-w-[240px] lg:max-w-[300px]">
+          <div className="puzzle-kouho-panel flex w-full flex-col items-center gap-2 sm:gap-3 lg:w-auto lg:min-w-[240px] lg:max-w-[300px]">
             <h4 className="puzzle-kouho-title m-0 w-full text-center">候補</h4>
             <table id="kouho" className="kouho-cols-4">
               <tbody>
