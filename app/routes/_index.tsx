@@ -6,16 +6,15 @@ import { CookieCrack } from "~/components/CookieCrack";
 import { KonamiListener } from "~/components/KonamiListener";
 import { Modal } from "~/components/Modal";
 import { assetUrl } from "~/lib/assetUrl";
-import { isReturnHomeNavigation } from "~/lib/returnHome";
+import { buildXShareUrl, isReturnHomeNavigation } from "~/lib/returnHome";
+import { SITE_DESCRIPTION, SITE_TITLE } from "~/lib/siteMeta";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Alice in NoneBer Land" },
-    { name: "description", content: "解読x数字がテーマのWeb謎" },
+    { title: SITE_TITLE },
+    { name: "description", content: SITE_DESCRIPTION },
   ];
 };
-
-const SURVEY_URL = "https://forms.gle/k6LTUR94E5wdMEsR9";
 
 export default function Index() {
   const [searchParams] = useSearchParams();
@@ -46,13 +45,17 @@ export default function Index() {
             <p className="mb-5 text-base leading-relaxed">
               無事に元の世界に帰還することができました！おめでとうございます！
             </p>
-            <p className="text-base leading-relaxed">
-              もしよろしければ
-              <a href={SURVEY_URL} target="_blank" rel="noreferrer">
-                アンケート
-              </a>
-              にお答えください。励みになります。
+            <p className="mb-5 text-base leading-relaxed">
+              クリア報告をXにポストしていただけると、とても嬉しいです。
             </p>
+            <a
+              href={buildXShareUrl()}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block rounded-lg border-2 border-gray-900 bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+            >
+              Xでポストする
+            </a>
           </div>
         </Modal>
       ) : null}

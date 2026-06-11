@@ -12,6 +12,12 @@ import "~/styles/alice.css";
 
 import { ProgressTrap } from "~/components/ProgressTrap";
 import { assetUrl } from "~/lib/assetUrl";
+import {
+  getOgImageUrl,
+  getSiteUrl,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+} from "~/lib/siteMeta";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -37,6 +43,9 @@ export const links: LinksFunction = () => [
   },
 ];
 
+const siteUrl = getSiteUrl();
+const ogImageUrl = getOgImageUrl();
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
@@ -46,6 +55,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
+        <title>{SITE_TITLE}</title>
+        <meta name="description" content={SITE_DESCRIPTION} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={SITE_TITLE} />
+        <meta property="og:title" content={SITE_TITLE} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:url" content={siteUrl} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={SITE_TITLE} />
+        <meta name="twitter:description" content={SITE_DESCRIPTION} />
+        <meta name="twitter:image" content={ogImageUrl} />
         <Meta />
         <Links />
       </head>
