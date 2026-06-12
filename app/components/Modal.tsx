@@ -35,15 +35,15 @@ export function Modal({ html, children, onClose, panelClassName }: Props) {
       role="dialog"
       aria-modal="true"
     >
-      <div className="flex min-h-full items-center justify-center p-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:p-4">
-        <button
-          type="button"
-          className="fixed inset-0 z-0 bg-black/40"
-          aria-label="閉じる"
-          onClick={onClose}
-        />
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/40"
+        aria-label="閉じる"
+        onClick={onClose}
+      />
+      <div className="relative z-10 flex min-h-[100svh] items-center justify-center p-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:min-h-full sm:p-4">
         <div
-          className={`relative z-[1] my-auto w-full max-w-[80vw] rounded-2xl border-2 border-[#95ccff] bg-white p-6 shadow-xl sm:max-h-[min(90dvh,720px)] ${panelSizing}`}
+          className={`my-auto w-full max-w-[80vw] rounded-2xl border-2 border-[#95ccff] bg-white p-6 shadow-xl sm:max-h-[min(90dvh,720px)] ${panelSizing}`}
         >
           {children ?? (
             <div

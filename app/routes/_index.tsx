@@ -29,6 +29,10 @@ export default function Index() {
 
   const closeReturnModal = useCallback(() => setShowReturnModal(false), []);
 
+  const openXShare = useCallback(() => {
+    window.open(buildXShareUrl(), "_blank", "noopener,noreferrer");
+  }, []);
+
   return (
     <div
       className="relative min-h-screen overflow-x-hidden overflow-y-visible pb-16"
@@ -50,14 +54,13 @@ export default function Index() {
             <p className="mb-4 text-sm leading-snug sm:mb-5 sm:text-base sm:leading-relaxed">
               クリア報告をXにポストしていただけると、とても嬉しいです。
             </p>
-            <a
-              href={buildXShareUrl()}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
               className="return-share-btn"
+              onClick={openXShare}
             >
               Xでポストする
-            </a>
+            </button>
           </div>
         </Modal>
       ) : null}

@@ -657,6 +657,8 @@ td:not(.holder):not(.kouho_masu) {
 .return-modal-panel {
   max-height: none;
   overflow: visible;
+  isolation: isolate;
+  transform: translateZ(0);
 }
 
 .return-share-btn {
@@ -665,22 +667,26 @@ td:not(.holder):not(.kouho_masu) {
   width: 100%;
   margin: 0;
   padding: 0.65rem 1.5rem;
-  border: 3px solid var(--alice-accent-deep);
+  border: 3px solid #6aa8e8;
   border-radius: 9999px;
-  background-color: var(--alice-accent-deep);
+  background-color: #6aa8e8;
   color: #fff;
+  font: inherit;
   font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.4;
   text-align: center;
-  text-decoration: none;
+  cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   box-shadow: 0 4px 16px rgba(106, 168, 232, 0.4);
 }
 
-.return-share-btn:visited,
 .return-share-btn:active {
+  background-color: #5196d9;
+  border-color: #5196d9;
   color: #fff;
 }
 
