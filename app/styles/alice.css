@@ -401,70 +401,72 @@ table {
   .puzzle-grid-wrap .question {
     width: 100%;
     max-width: 100%;
+    table-layout: fixed;
   }
 
   .puzzle-grid-wrap .question td {
-    width: calc(100% / var(--puzzle-cols, 9));
+    height: 0;
     min-width: 0;
-    height: auto;
-    aspect-ratio: 1;
+    min-height: 0;
+    padding: 0;
+    vertical-align: top;
   }
 
-  .question.puzzle-cols-9 {
-    --puzzle-cell: calc((100% - 0px) / 9);
+  .puzzle-grid-wrap .question.puzzle-cols-9 td {
+    width: 11.111111%;
+    padding-bottom: 11.111111%;
   }
 
-  .question.puzzle-cols-7 {
-    --puzzle-cell: calc((100% - 0px) / 7);
+  .puzzle-grid-wrap .question.puzzle-cols-7 td {
+    width: 14.285714%;
+    padding-bottom: 14.285714%;
   }
 
-  .question.puzzle-cols-4 {
-    --puzzle-cell: calc((100% - 0px) / 4);
+  .puzzle-grid-wrap .question.puzzle-cols-4 td {
+    width: 25%;
+    padding-bottom: 25%;
   }
 
   #kouho {
     width: 100%;
-    max-width: min(calc(var(--kouho-cell) * var(--kouho-cols, 3)), 100%);
+    max-width: 100%;
+    table-layout: fixed;
   }
 
   #kouho td {
+    height: 0;
     min-width: 0;
-  }
-
-  #kouho.kouho-cols-3 {
-    --kouho-cell: calc(100% / 3);
-    width: 100%;
-    max-width: 100%;
+    min-height: 0;
+    padding: 0;
+    vertical-align: top;
   }
 
   #kouho.kouho-cols-3 td {
-    width: calc(100% / 3);
-    height: auto;
-    aspect-ratio: 1;
-  }
-
-  #kouho.kouho-cols-4 {
-    --kouho-cell: calc(100% / 4);
-    width: 100%;
-    max-width: 100%;
+    width: 33.333333%;
+    padding-bottom: 33.333333%;
   }
 
   #kouho.kouho-cols-4 td {
-    width: calc(100% / 4);
-    height: auto;
-    aspect-ratio: 1;
-  }
-
-  #kouho.kouho-cols-8 {
-    --kouho-cell: calc(100% / 8);
-    width: 100%;
-    max-width: 100%;
+    width: 25%;
+    padding-bottom: 25%;
   }
 
   #kouho.kouho-cols-8 td {
-    width: calc(100% / 8);
-    height: auto;
-    aspect-ratio: 1;
+    width: 12.5%;
+    padding-bottom: 12.5%;
+  }
+
+  #answer_button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .form-control {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 

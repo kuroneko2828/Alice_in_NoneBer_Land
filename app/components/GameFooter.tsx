@@ -141,7 +141,7 @@ export function GameFooter() {
           />
           <button
             type="button"
-            className="rounded-r-full border-2 border-l-0 border-[#95ccff]/45 bg-[#f5faff] px-5 py-2.5 text-[#6aa8e8] hover:bg-[#eef6ff]"
+            className="shrink-0 whitespace-nowrap rounded-r-full border-2 border-l-0 border-[#95ccff]/45 bg-[#f5faff] px-3 py-2.5 text-sm text-[#6aa8e8] hover:bg-[#eef6ff] sm:px-5 sm:text-base"
             id="answer_button"
             onClick={redirectByAnswer}
           >
