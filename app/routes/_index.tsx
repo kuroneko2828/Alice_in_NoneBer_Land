@@ -38,21 +38,23 @@ export default function Index() {
       {showReturnModal ? (
         <Modal
           onClose={closeReturnModal}
-          panelClassName="w-fit max-w-[min(92vw,40rem)]"
+          panelClassName="max-w-[min(92vw,22rem)] !p-4 sm:max-w-[min(92vw,36rem)] sm:!p-6"
         >
-          <div className="text-center text-gray-800 [&_a:not(.btn)]:text-[#95ccff] [&_a:not(.btn)]:underline [&_a:not(.btn)]:decoration-[#95ccff]/40 [&_a:not(.btn)]:underline-offset-4 [&_a:not(.btn)]:hover:decoration-[#95ccff]">
-            <h2 className="mb-6 text-4xl font-bold tracking-wide">帰還</h2>
-            <p className="mb-5 text-base leading-relaxed">
+          <div className="text-center text-gray-800">
+            <h2 className="mb-3 text-2xl font-bold tracking-wide sm:mb-5 sm:text-4xl">
+              帰還
+            </h2>
+            <p className="mb-2.5 text-sm leading-snug sm:mb-4 sm:text-base sm:leading-relaxed">
               無事に元の世界に帰還することができました！おめでとうございます！
             </p>
-            <p className="mb-5 text-base leading-relaxed">
+            <p className="mb-4 text-sm leading-snug sm:mb-5 sm:text-base sm:leading-relaxed">
               クリア報告をXにポストしていただけると、とても嬉しいです。
             </p>
             <a
               href={buildXShareUrl()}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-solid-info large-btn inline-block no-underline px-8 py-3 text-base font-bold"
+              className="btn btn-solid-info large-btn inline-block w-full no-underline px-6 py-2.5 text-sm font-bold sm:w-auto sm:px-8 sm:py-3 sm:text-base"
             >
               Xでポストする
             </a>
