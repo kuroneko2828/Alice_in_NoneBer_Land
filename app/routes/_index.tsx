@@ -40,7 +40,7 @@ export default function Index() {
           onClose={closeReturnModal}
           panelClassName="w-fit max-w-[min(92vw,40rem)]"
         >
-          <div className="text-center text-gray-800 [&_a]:text-[#95ccff] [&_a]:underline [&_a]:decoration-[#95ccff]/40 [&_a]:underline-offset-4 [&_a]:hover:decoration-[#95ccff]">
+          <div className="text-center text-gray-800 [&_a:not(.btn)]:text-[#95ccff] [&_a:not(.btn)]:underline [&_a:not(.btn)]:decoration-[#95ccff]/40 [&_a:not(.btn)]:underline-offset-4 [&_a:not(.btn)]:hover:decoration-[#95ccff]">
             <h2 className="mb-6 text-4xl font-bold tracking-wide">帰還</h2>
             <p className="mb-5 text-base leading-relaxed">
               無事に元の世界に帰還することができました！おめでとうございます！
@@ -52,7 +52,7 @@ export default function Index() {
               href={buildXShareUrl()}
               target="_blank"
               rel="noreferrer"
-              className="inline-block rounded-lg border-2 border-gray-900 bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+              className="btn btn-solid-info large-btn inline-block no-underline px-8 py-3 text-base font-bold"
             >
               Xでポストする
             </a>

@@ -602,6 +602,20 @@ td:not(.holder):not(.kouho_masu) {
   color: #fff;
 }
 
+.btn.btn-solid-info {
+  color: #fff;
+  border-color: var(--alice-accent-deep);
+  background-color: var(--alice-accent-deep);
+  box-shadow: 0 4px 16px rgba(106, 168, 232, 0.4);
+}
+
+.btn.btn-solid-info:hover {
+  background-color: #5196d9;
+  border-color: #5196d9;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(106, 168, 232, 0.45);
+}
+
 #modal {
   top: 20%;
   font-size: 16pt;
