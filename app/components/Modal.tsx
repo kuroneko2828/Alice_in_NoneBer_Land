@@ -1,4 +1,5 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 type Props = {
   onClose: () => void;
@@ -10,6 +11,12 @@ type Props = {
 );
 
 export function Modal({ html, children, onClose, panelClassName }: Props) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -20,28 +27,33 @@ export function Modal({ html, children, onClose, panelClassName }: Props) {
 
   const panelSizing = panelClassName ?? "w-full max-w-[80vw]";
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
-      className="fixed inset-0 z-[200] flex animate-modal-in items-center justify-center overflow-y-auto overscroll-contain p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-[max(0.75rem,env(safe-area-inset-top))] sm:p-4"
+      className="fixed inset-0 z-[200] animate-modal-in overflow-y-auto overscroll-contain"
       role="dialog"
       aria-modal="true"
     >
-      <button
-        type="button"
-        className="fixed inset-0 bg-black/40"
-        aria-label="閉じる"
-        onClick={onClose}
-      />
-      <div
-        className={`relative z-10 w-full max-h-[min(90dvh,720px)] rounded-2xl border-2 border-[#95ccff] bg-white p-6 shadow-xl ${panelSizing}`}
-      >
+      <div className="flex min-h-full items-center justify-center p-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:p-4">
+        <button
+          type="button"
+          className="fixed inset-0 z-0 bg-black/40"
+          aria-label="閉じる"
+          onClick={onClose}
+        />
+        <div
+          className={`relative z-[1] my-auto w-full max-w-[80vw] rounded-2xl border-2 border-[#95ccff] bg-white p-6 shadow-xl sm:max-h-[min(90dvh,720px)] ${panelSizing}`}
+        >
           {children ?? (
             <div
               className="max-h-[calc(90dvh-3rem)] overflow-y-auto text-base text-gray-700 [&_button]:mt-2 [&_button]:rounded-lg [&_button]:border-2 [&_button]:border-[#95ccff] [&_button]:px-4 [&_button]:py-2 [&_button]:text-[#95ccff]"
               dangerouslySetInnerHTML={{ __html: html! }}
             />
           )}
+        </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -38,9 +38,9 @@ export default function Index() {
       {showReturnModal ? (
         <Modal
           onClose={closeReturnModal}
-          panelClassName="max-w-[min(92vw,22rem)] !p-4 sm:max-w-[min(92vw,36rem)] sm:!p-6"
+          panelClassName="return-modal-panel max-w-[min(92vw,22rem)] !p-4 sm:max-w-[min(92vw,36rem)] sm:!p-6"
         >
-          <div className="text-center text-gray-800">
+          <div className="return-modal-body text-center text-gray-800">
             <h2 className="mb-3 text-2xl font-bold tracking-wide sm:mb-5 sm:text-4xl">
               帰還
             </h2>
@@ -54,7 +54,7 @@ export default function Index() {
               href={buildXShareUrl()}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-solid-info large-btn inline-block w-full no-underline px-6 py-2.5 text-sm font-bold sm:w-auto sm:px-8 sm:py-3 sm:text-base"
+              className="return-share-btn"
             >
               Xでポストする
             </a>
